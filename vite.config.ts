@@ -5,6 +5,8 @@ import { viteSingleFile } from 'vite-plugin-singlefile';
 // `npm run build` → normal multi-file build (the 3D world is a lazy chunk).
 // `npm run build:single` → one self-contained HTML file for quick sharing/preview.
 export default defineConfig(({ mode }) => ({
+  // Set base to repo name for GitHub Pages; local dev still works fine at /
+  base: mode === 'production' ? '/Wedding-Invitation/' : '/',
   plugins: mode === 'single' ? [react(), viteSingleFile()] : [react()],
   server: {
     host: '0.0.0.0',
